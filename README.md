@@ -113,7 +113,7 @@ Anda dapan memastikan apakah fungsi RBAC berfungsi atau tidak dengan:
 
 ### Screenshot akses ditolak
 
-![Akses Ditolak - Dokter](TSS\T1.png)
+![Akses Ditolak - Dokter](TSS/T1.png)
 *Dokter ketika mencoba mengakses halaman pasien*
 
 ## Skema Database & Model
@@ -121,56 +121,56 @@ Anda dapan memastikan apakah fungsi RBAC berfungsi atau tidak dengan:
 ### File Migrasi
 
 1. Migrasi Detail Periksa
-![Migrasi Detail Periksa](TSS\tgA2.png)
+![Migrasi Detail Periksa](TSS/tgA2.png)
 *Migrasi untuk tabel detail_periksas*
 
 2. Obat Migration
-![Obat Migration](TSS\tgA1.png)
+![Obat Migration](TSS/tgA1.png)
 *Migrasi untuk tabel obats*
 
 ### Model Files
 
 1. Model Periksa
-![Model Periksa](TSS\tgA3.png)
+![Model Periksa](TSS/tgA3.png)
 *Implementasi model Periksa dengan relasinya*
 
 2. Model Detail Periksa  
-![Model Detail Periksa](TSS\tgA4.png)
+![Model Detail Periksa](TSS/tgA4.png)
 *Implementasi model DetailPeriksa dengan relasinya*
 
 3. Model Obat
-![Model Obat](TSS\tgA5.png)
+![Model Obat](TSS/tgA5.png)
 *Implementasi model Obat dengan relasinya*
 
 ### Database Setup
 
-![Migrasi Sukes](TSS\tgA7.png)
+![Migrasi Sukes](TSS/tgA7.png)
 *Screenshot terminal menunjukkan migrasi database berhasil*
 
 ## User Interface
 
 ### Halaman Publik
 1. Landing Page
-![Landing Page](TSS\T2.png)
+![Landing Page](TSS/T2.png)
 *Halaman awal website yang dapat diakses publik*
 
 2. Halaman Login
-![Login Page](TSS\T3.png) 
+![Login Page](TSS/T3.png) 
 *Halaman login untuk dokter dan pasien*
 
 3. Halaman Register 
-![Register Page](TSS\T4.png)
+![Register Page](TSS/T4.png)
 *Halaman pendaftaran untuk pasien baru*
 
 ### Halaman Dokter
 1. Dashboard
-![Dashboard Dokter](TSS\T5.png)
+![Dashboard Dokter](TSS/T5.png)
 *Halaman dashboard untuk dokter*
 
-3. Daftar Obat
-![List Obat](TSS\T6.png)
+3. Daftar Obat  
+![List Obat](TSS/T6.png)
 *Halaman pengelolaan daftar obat*
 
-4. Add Medicine Form
-![Add Medicine](TSS\T7.png) 
+4. Form Tambah Obat
+![Add Medicine](TSS/T7.png)
 *Form untuk menambahkan obat baru*
