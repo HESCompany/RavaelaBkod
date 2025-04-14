@@ -1,91 +1,90 @@
-# RavaelaBkod
+# Sismenkes Bengkel Koding
 
-Web application for medical check-ups and drug management.
+Repositori tugas bengkel koding website sismenkes dengan laravel.
+Nama : Heryawan Eko Saputro
+NIM : A11.2022.14237
 
-## Installation Guide
+## Cara menjalankan projek secara lokal
 
-1. Clone the repository:
+1. Clone repositori:
 ```bash
 git clone https://github.com/yourusername/RavaelaBkod.git
 cd RavaelaBkod
 ```
 
-2. Install PHP dependencies:
+2. Install dependensi PHP:
 ```bash
 composer install
 ```
 
-3. Install Node.js dependencies:
+3. Install dependensi node:
 ```bash
 npm install
 ```
 
-4. Setup environment:
+4. Setup environment lokal:
 ```bash
 cp .env.example .env
 php artisan key:generate
 ```
 
-5. Configure database in `.env` file and run migrations:
+5. Jalankan migrasi beserta seeder:
 ```bash
 php artisan migrate --seed
 ```
 
-6. Start development servers:
+6. Jalankan projek:
 ```bash
 php artisan serve
-npm run dev
 ```
 
 ## Route Documentation
 
 ### Authentication Routes
-| Method | URI | Controller | Middleware | Description |
-|--------|-----|------------|------------|-------------|
-| GET | /register | AuthController@showRegisterForm | - | Show registration form |
-| POST | /register | AuthController@register | - | Process registration |
-| GET | /login | AuthController@showLoginForm | - | Show login form |
-| POST | /login | AuthController@login | - | Process login |
-| POST | /logout | AuthController@logout | auth | Process logout |
+| Route | Controller | Middleware | Deskripsi |
+|-------|------------|------------|-----------|
+| /register | AuthController@showRegisterForm | - | Halaman register |
+| /register | AuthController@register | - | Redirect register |
+| /login | AuthController@showLoginForm | - | Halaman login |
+| /login | AuthController@login | - | Redirect login |
+| /logout | AuthController@logout | auth | Redirect logout |
 
 ### Doctor Routes
-| Method | URI | Controller | Middleware | Description |
-|--------|-----|------------|------------|-------------|
-| GET | /dokter/dashboard | - | auth, role:dokter | Doctor dashboard |
-| GET | /dokter/obat | ObatController@index | auth, role:dokter | List medicines |
-| GET | /dokter/obat/create | ObatController@create | auth, role:dokter | Create medicine form |
-| POST | /dokter/obat | ObatController@store | auth, role:dokter | Store new medicine |
-| GET | /dokter/obat/{id}/edit | ObatController@edit | auth, role:dokter | Edit medicine form |
-| PUT | /dokter/obat/{id} | ObatController@update | auth, role:dokter | Update medicine |
-| DELETE | /dokter/obat/{id} | ObatController@destroy | auth, role:dokter | Delete medicine |
+| Route | Controller | Middleware | Description |
+|-------|------------|------------|-------------|
+| /dokter/dashboard | - | auth, role:dokter | Halaman dokter |
+| /dokter/obat | ObatController@index | auth, role:dokter | List obat |
+| /dokter/obat/create | ObatController@create | auth, role:dokter | Halaman tambah obat |
+| /dokter/obat | ObatController@store | auth, role:dokter | Simpan obat |
+| /dokter/obat/{id}/edit | ObatController@edit | auth, role:dokter | Halaman edit obat |
+| /dokter/obat/{id} | ObatController@update | auth, role:dokter | Update obat |
+| /dokter/obat/{id} | ObatController@destroy | auth, role:dokter | Hapus obat |
 
 ### Patient Routes
-| Method | URI | Controller | Middleware | Description |
-|--------|-----|------------|------------|-------------|
-| GET | /pasien/dashboard | - | auth, role:pasien | Patient dashboard |
+| URI | Controller | Middleware | Description |
+|-----|------------|------------|-------------|
+| /pasien/dashboard | - | auth, role:pasien | Patient dashboard |
 
-## Role-Based Access Control (RBAC)
+## Penjelasan implementasi RBAC
 
-The application implements RBAC through:
-
-1. User Roles
-- Defined in users table migration:
+1. Role user
+- Terdefinisi di kode migrasi user:
 ```php
 $table->enum('role', ['pasien', 'dokter'])->default('pasien');
 ```
 
 2. Role Middleware
-- Registered in `bootstrap/app.php`:
+- Terdefinisi in `bootstrap/app.php`:
 ```php
 $middleware->alias([
     'role' => \App\Http\Middleware\RoleMiddleware::class,
 ]);
 ```
 
-3. Route Protection
-- Doctor routes are protected with `role:dokter` middleware
-- Patient routes are protected with `role:pasien` middleware
-- Both require authentication via `auth` middleware
+3. Proteksi Route
+- Route Dokter terhalangi dengan middleware `role:dokter`
+- Route Pasien terhalangi dengan middleware `role:pasien`
+- Dua duanya memerlukan otentikasi melalui middleware `auth`
 
 4. User Model Relations
 ```php
@@ -104,7 +103,7 @@ public function dokters(): HasMany
 
 ### Testing RBAC
 
-You can verify RBAC functionality by:
-1. Logging in as a doctor - Can access /dokter/* routes but not /pasien/* routes
-2. Logging in as a patient - Can access /pasien/* routes but not /dokter/* routes
-3. Unauthorized users - Redirected to login when accessing protected routes
+Anda dapan memastikan apakah fungsi RBAC berfungsi atau tidak dengan:
+1. Login sebagai dokter - route /dokter/* dapat diakses tetapi route /pasien/* tidak dapat diakses
+2. Login sebagai pasien - route /pasien/* dapat diakses tetapi route /dokter/* tidak dapat diakses
+3. User ilegal - Otomatis redirect ke halaman login jika membuka halaman yang memerlukan login
