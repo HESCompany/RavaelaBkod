@@ -113,74 +113,64 @@ Anda dapan memastikan apakah fungsi RBAC berfungsi atau tidak dengan:
 
 ### Screenshot akses ditolak
 
-![Access Denied - Dokter](docs/images/access-denied-dokter.png)
-*Gambar 1: Dokter mencoba mengakses halaman pasien*
+![Akses Ditolak - Dokter](TSS\T1.png)
+*Dokter ketika mencoba mengakses halaman pasien*
 
-![Access Denied - Pasien](docs/images/access-denied-pasien.png) 
-*Gambar 2: Pasien mencoba mengakses halaman dokter*
+## Skema Database & Model
 
-![Unauthenticated](docs/images/unauthenticated.png)
-*Gambar 3: User belum login mencoba mengakses halaman terproteksi*
+### File Migrasi
 
-## Database Schema & Models
-
-### Migration Files
-
-1. Detail Periksa Migration
-![Detail Periksa Migration](docs/images/detail-periksa-migration.png)
-*Migration untuk tabel detail_periksas*
+1. Migrasi Detail Periksa
+![Migrasi Detail Periksa](TSS\tgA2.png)
+*Migrasi untuk tabel detail_periksas*
 
 2. Obat Migration
-![Obat Migration](docs/images/obat-migration.png)
-*Migration untuk tabel obats*
+![Obat Migration](TSS\tgA1.png)
+*Migrasi untuk tabel obats*
 
 ### Model Files
 
 1. Model Periksa
-![Model Periksa](docs/images/model-periksa.png)
+![Model Periksa](TSS\tgA3.png)
 *Implementasi model Periksa dengan relasinya*
 
 2. Model Detail Periksa  
-![Model Detail Periksa](docs/images/model-detail-periksa.png)
+![Model Detail Periksa](TSS\tgA4.png)
 *Implementasi model DetailPeriksa dengan relasinya*
 
 3. Model Obat
-![Model Obat](docs/images/model-obat.png)
+![Model Obat](TSS\tgA5.png)
 *Implementasi model Obat dengan relasinya*
 
 ### Database Setup
 
-![Migration Success](docs/images/migration-success.png)
+![Migrasi Sukes](TSS\tgA7.png)
 *Screenshot terminal menunjukkan migrasi database berhasil*
 
 ## User Interface
 
-### Public Pages
+### Halaman Publik
 1. Landing Page
-![Landing Page](docs/images/landing-page.png)
+![Landing Page](TSS\T2.png)
 *Halaman awal website yang dapat diakses publik*
 
-2. Login Page
-![Login Page](docs/images/login-page.png) 
+2. Halaman Login
+![Login Page](TSS\T3.png) 
 *Halaman login untuk dokter dan pasien*
 
-3. Register Page 
-![Register Page](docs/images/register-page.png)
+3. Halaman Register 
+![Register Page](TSS\T4.png)
 *Halaman pendaftaran untuk pasien baru*
 
-### Doctor Pages
+### Halaman Dokter
 1. Dashboard
-![Doctor Dashboard](docs/images/doctor-dashboard.png)
+![Dashboard Dokter](TSS\T5.png)
 *Halaman dashboard untuk dokter*
 
-2. Medical Check Form
-![Medical Check](docs/images/medical-check.png)
-*Form pemeriksaan pasien oleh dokter* 
-
-3. Medicine Management
-![Medicine List](docs/images/medicine-list.png)
+3. Daftar Obat
+![List Obat](TSS\T6.png)
 *Halaman pengelolaan daftar obat*
 
 4. Add Medicine Form
-![Add Medicine](docs/images/add-medicine.png) 
+![Add Medicine](TSS\T7.png) 
 *Form untuk menambahkan obat baru*
