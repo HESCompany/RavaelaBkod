@@ -12,7 +12,15 @@ class DetailPeriksa extends Model
         'id_obat',
     ];
 
-        /**
+    /**
+     * Validation rules
+     */
+    public static $rules = [
+        'id_periksa' => 'required|exists:periksas,id',
+        'id_obat' => 'required|exists:obats,id',
+    ];
+
+    /**
      * Relasi ke tabel Periksa
      */
     public function periksa(): BelongsTo

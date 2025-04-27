@@ -16,7 +16,23 @@ class Periksa extends Model
         'biaya_periksa',
     ];
 
-        /**
+    protected $casts = [
+        'tgl_periksa' => 'datetime',
+        'biaya_periksa' => 'integer',
+    ];
+
+    /**
+     * Validation rules for Periksa
+     */
+    public static $rules = [
+        'id_pasien' => 'required|exists:users,id,role,pasien',
+        'id_dokter' => 'required|exists:users,id,role,dokter',
+        'tgl_periksa' => 'required|date',
+        'catatan' => 'required|string',
+        'biaya_periksa' => 'required|integer|min:0',
+    ];
+
+    /**
      * Relasi ke tabel User sebagai pasien
      */
     public function pasien(): BelongsTo

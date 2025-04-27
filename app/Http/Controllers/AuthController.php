@@ -71,12 +71,23 @@ class AuthController extends Controller
     }
     public function logout(Request $request)
     {
+        // Clear remember me cookie jika ada
+        if ($cookie = $request->cookie('remember_web_')) {
+            \Cookie::queue(\Cookie::forget('remember_web_'));
+        }
+
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
+        // Tambahkan header keamanan
+        $response = redirect('/login');
+        $response->header('Cache-Control', 'no-store, no-cache, must-revalidate, max-age=0');
+        $response->header('Pragma', 'no-cache');
+        $response->header('Expires', 'Sat, 01 Jan 2000 00:00:00 GMT');
+
         toastr()->success('Anda berhasil logout');
-        return redirect('/login');
+        return $response;
     }
 }
